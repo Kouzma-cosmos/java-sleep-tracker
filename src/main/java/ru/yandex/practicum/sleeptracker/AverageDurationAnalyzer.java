@@ -13,7 +13,8 @@ public class AverageDurationAnalyzer implements Function<List<SleepSession>, Sle
 
         // Считаем среднее через стрим (он выдает double)
         double averageDouble = sessions.stream()
-                .mapToLong(session -> java.time.Duration.between(session.getStartTime(), session.getEndTime()).toMinutes())
+                .mapToLong(session -> java.time.Duration.between(session.getStartTime(),
+                        session.getEndTime()).toMinutes())
                 .average()
                 .orElse(0.0);
 
