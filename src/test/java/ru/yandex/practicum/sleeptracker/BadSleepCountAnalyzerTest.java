@@ -26,6 +26,7 @@ public class BadSleepCountAnalyzerTest {
         sessions.add(new SleepSession(now, now.plusHours(8), SleepQuality.GOOD));
         sessions.add(new SleepSession(now, now.plusHours(4), SleepQuality.BAD)); // +2
 
-        assertEquals(2L, new BadSleepCountAnalyzer().apply(sessions).getValue(), "Должно найти ровно 2 плохие сессии");
+        assertEquals(2L, new BadSleepCountAnalyzer().apply(sessions).getValue(), "Должно найти ровно 2" +
+                " плохие сессии");
     }
 }
