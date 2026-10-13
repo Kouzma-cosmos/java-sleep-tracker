@@ -25,7 +25,8 @@ public class SleeplessNightsAnalyzerTest {
                 SleepQuality.GOOD
         ));
 
-        assertEquals(1, analyzer.apply(sessions).getValue(), "Должна быть 1 бессонная ночь при переходе месяцев");
+        assertEquals(1, analyzer.apply(sessions).getValue(), "Должна быть 1 бессонная ночь при " +
+                "переходе месяцев");
     }
 
     @Test
@@ -39,7 +40,8 @@ public class SleeplessNightsAnalyzerTest {
                 SleepQuality.NORMAL
         ));
 
-        assertEquals(1, analyzer.apply(sessions).getValue(), "Правило 12 дня должно сдвинуть дату старта");
+        assertEquals(1, analyzer.apply(sessions).getValue(), "Правило 12 дня должно сдвинуть дату " +
+                "старта");
     }
 
     @Test
