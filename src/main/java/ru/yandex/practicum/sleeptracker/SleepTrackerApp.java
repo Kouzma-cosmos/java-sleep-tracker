@@ -12,9 +12,15 @@ public class SleepTrackerApp {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Ошибка: Не указан путь к файлу лога. Передайте путь как аргумент при запуске.");
+            return;
+        }
+
+        String filePath = args[0];
+
         try {
-            List<SleepSession>
-                    sessions = Files.lines(Paths.get("src/main/resources/sleep_log.txt"))
+            List<SleepSession> sessions = Files.lines(Paths.get(filePath))
                     .map(line -> {
                         String[] parts = line.split(";");
                         LocalDateTime start = LocalDateTime.parse(parts[0], FORMATTER);
@@ -33,7 +39,7 @@ public class SleepTrackerApp {
             System.out.println("==============================");
 
         } catch (IOException e) {
-            System.out.println("Ошибка: не удалось найти или прочитать файл sleep_log.txt. Проверьте путь к файлу.");
+            System.out.println("Ошибка: не удалось найти или прочитать файл " + filePath + ". Проверьте путь к файлу.");
         } catch (RuntimeException e) {
             System.out.println("Ошибка: структура лога не соответствует ожидаемой. Проверьте формат данных в файле.");
         }

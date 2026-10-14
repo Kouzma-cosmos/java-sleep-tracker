@@ -18,7 +18,6 @@ public class AverageDurationAnalyzer implements Function<List<SleepSession>, Sle
                 .average()
                 .orElse(0.0);
 
-        // Округляем до ближайшего целого числа и приводим к типу Long
         long roundedAverage = Math.round(averageDouble);
 
         return new SleepAnalysisResult<>("Средняя продолжительность сессии (в минутах)", roundedAverage);
